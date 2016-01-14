@@ -18,11 +18,9 @@ app.run(function($ionicPlatform) {
     });
 });
  
-app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoading) {
+app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoading, $ionicPlatform) {
      
-    document.addEventListener("deviceready", onDeviceReady, false);
-     
-    function onDeviceReady() {
+    $ionicPlatform.ready(function() {
          
         $ionicLoading.show({
             template: '<ion-spinner icon="bubbles"></ion-spinner><br/>Acquiring location!'
@@ -54,5 +52,5 @@ app.controller('MapController', function($scope, $cordovaGeolocation, $ionicLoad
             $ionicLoading.hide();
             console.log(err);
         });
-    }               
+    });               
 });
